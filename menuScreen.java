@@ -3,6 +3,7 @@ package com.example.kishan.homework2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,6 +17,8 @@ public class menuScreen extends AppCompatActivity {
     boolean isChar1=true;
     String choice1,choice2;
 
+    public static final String T_MenuScreen = "T_MenuScreen";
+
     public Character getChar1() {
         return char1;
     }
@@ -27,8 +30,9 @@ public class menuScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(T_MenuScreen, "App is Created");
         setContentView(R.layout.activity_menu_screen);
-        setTitle("Character Selection");
+        setTitle(getString(R.string.menu_title));
         System.out.println("Test");
         ravi_Button= (Button) findViewById(R.id.ravi_Button);
         hanafi_Button= (Button) findViewById(R.id.hanafi_Button);
@@ -84,5 +88,36 @@ public class menuScreen extends AppCompatActivity {
             }
             return b.toByteArray();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(T_MenuScreen, "App is started");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(T_MenuScreen, "App is stopped");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(T_MenuScreen, "App is destroyed");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(T_MenuScreen, "App is paused");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(T_MenuScreen, "App is resumed");
     }
 }

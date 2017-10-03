@@ -3,10 +3,12 @@ package com.example.kishan.homework2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -22,9 +24,12 @@ public class battleScreen extends AppCompatActivity {
     boolean char1Selected = false;
     boolean char2Selected = false;
 
+    public static final String T_MenuScreen = "T_MenuScreen";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(T_MenuScreen, "App is Created");
         setContentView(R.layout.activity_battle_screen);
 
 
@@ -55,12 +60,12 @@ public class battleScreen extends AppCompatActivity {
 
         char1HealthBar.setMax(char1.getHealth());
         char1HealthBar.setProgress(char1.getHealth());
-        char1HealthBar.set
+
 
         char2HealthBar.setMax(char2.getHealth());
         char2HealthBar.setProgress(char2.getHealth());
 
-        setTitle("Battle royale between " + char1.getName() + " and " + char2.getName());
+        setTitle(getString(R.string.battle_menu_1) + " " + char1.getName() + " " + getString(R.string.battle_menu_2) + " " + char2.getName());
         updateInfoFields();
 
 
@@ -130,12 +135,18 @@ public class battleScreen extends AppCompatActivity {
         if(isChar1Turn){
             if(char1.isAttacking){
                 char2.getsAttacked(char1);
+                if(char2.getHealth()<=0){
+                    displayWinner(char1);
+                }
             }else{
                 char1.heals();
             }
         }else{
             if(char2.isAttacking){
                 char1.getsAttacked(char2);
+                if(char1.getHealth()<=0){
+                    displayWinner(char2);
+                }
             }else{
                 char1.heals();
             }
@@ -143,15 +154,52 @@ public class battleScreen extends AppCompatActivity {
     }
 
     public void updateInfoFields(){
-        char1Info = ("Character: " + char1.getName() + "\n" + "Health: " + char1.getHealth() + "\n"
-                + "Attack: " + char1.getAttackValue() + "\n" + "Defense: " + char1.getDefenseValue());
+        char1Info = (getString(R.string.info_character) + " " + char1.getName() + "\n" + getString(R.string.info_health) + " " + char1.getHealth() + "\n"
+                + getString(R.string.info_attack) + " " + char1.getAttackValue() + "\n" + getString(R.string.info_defense) + " " + char1.getDefenseValue());
         char1InfoBox.setText(char1Info);
 
         char2Info = ("Character: " + char2.getName() + "\n" + "Health: " + char2.getHealth() + "\n"
-                + "Attack: " + char2.getAttackValue() + "\n" + "Defense: " + char2.getDefenseValue());
+                + getString(R.string.info_attack) + " " + char2.getAttackValue() + "\n" + getString(R.string.info_defense) + " " + char2.getDefenseValue());
         char2InfoBox.setText(char2Info);
 
         char1HealthBar.setProgress(char1.getHealth());
         char2HealthBar.setProgress(char2.getHealth());
+    }
+    public void displayWinner(Character winner){
+        String text = "Professor " + winner.getName() + " has won!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+        toast.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(T_MenuScreen, "App is started");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(T_MenuScreen, "App is stopped");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(T_MenuScreen, "App is destroyed");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(T_MenuScreen, "App is paused");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(T_MenuScreen, "App is resumed");
     }
 }

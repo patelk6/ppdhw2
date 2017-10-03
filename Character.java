@@ -34,9 +34,9 @@ public class Character {
     }
 
     public void getsAttacked(Character attackedBy){
-        this.health -= (attackedBy.getAttackValue()-defenseValue);
+        this.health -= (attackedBy.getAttackValue()-this.defenseValue);
     }
     public void heals(){
-        this.health+=(defenseValue/2);
+        this.health+=(this.defenseValue/2);
     }
 }
