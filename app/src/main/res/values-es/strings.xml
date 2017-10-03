@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Battle Royale</string>
+    <string name="execute_turn_button">Ejecutar Turno</string>
+    <string name="attack_button">Ataque</string>
+    <string name="menu_title">Selección de Personajes</string>
+    <string name="battle_menu_1">Batalla entre </string>
+    <string name="battle_menu_2"> y </string>
+    <string name="heal_button">Sanar</string>
+    <string name="select_actions">Seleccione Acciones</string>
+    <string name="info_character">Personaje:</string>
+    <string name="info_health">Salud:</string>
+    <string name="info_defense">Defensa:</string>
+    <string name="info_attack">Ataque</string>
+    <string name="begin_game_button">comenzar el juego</string>
+</resources>

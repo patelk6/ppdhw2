@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Homework2</string>
+    <string name="app_name">Battle Royale</string>
+    <string name="execute_turn_button">Execute Turn</string>
+
+    <string name="heal_button">Heal</string>
+    <string name="attack_button">Attack</string>
+    <string name="menu_title">Character Selection</string>
+    <string name="battle_menu_1">Battle royale between </string>
+    <string name="battle_menu_2"> and </string>
+    <string name="select_actions">Select Actions</string>
+    <string name="info_character">Character:</string>
+    <string name="info_health">Health:</string>
+    <string name="info_defense">Defense:</string>
+    <string name="info_attack">Attack</string>
+    <string name="begin_game_button">Begin Game</string>
 </resources>
