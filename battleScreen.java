@@ -1,6 +1,9 @@
 package com.example.kishan.homework2;
+/**
+ * @author: Kishan Patel
+ * @date: 10/3/2017
+ */
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,9 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+
 
 public class battleScreen extends AppCompatActivity {
     Character char1,char2;
@@ -68,7 +69,8 @@ public class battleScreen extends AppCompatActivity {
         setTitle(getString(R.string.battle_menu_1) + " " + char1.getName() + " " + getString(R.string.battle_menu_2) + " " + char2.getName());
         updateInfoFields();
 
-
+        //When attack is chosen, the action selected textView will populate with data to let the user know
+        //what has been chosen.
         attack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,7 +109,7 @@ public class battleScreen extends AppCompatActivity {
                 char2Selected = true;
             }
         });
-
+        //Turns are calculated when the execute turn button is hit.
         executeTurnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +123,8 @@ public class battleScreen extends AppCompatActivity {
 
 
     }
+    //Function to create the character that was chosen previously. Created based on the string that
+    //was extracted from the intent of this activity
     public Character createCharacter(String characterName){
         switch(characterName){
             case "Ravi":
@@ -130,7 +134,7 @@ public class battleScreen extends AppCompatActivity {
         }
         return null;
     }
-
+    //Logic to execute turn. Will alternate turns between character 1 and 2.
     public void executeTurn(Character c1, Character c2, boolean isChar1Turn){
         if(isChar1Turn){
             if(char1.isAttacking){
@@ -152,7 +156,7 @@ public class battleScreen extends AppCompatActivity {
             }
         }
     }
-
+    //Function to update the info fields, to let the user know character stats.
     public void updateInfoFields(){
         char1Info = (getString(R.string.info_character) + " " + char1.getName() + "\n" + getString(R.string.info_health) + " " + char1.getHealth() + "\n"
                 + getString(R.string.info_attack) + " " + char1.getAttackValue() + "\n" + getString(R.string.info_defense) + " " + char1.getDefenseValue());
@@ -165,6 +169,7 @@ public class battleScreen extends AppCompatActivity {
         char1HealthBar.setProgress(char1.getHealth());
         char2HealthBar.setProgress(char2.getHealth());
     }
+    //Function to display the winner. Is called when one characters health reaches 0 or less.
     public void displayWinner(Character winner){
         String text = "Professor " + winner.getName() + " has won!";
         int duration = Toast.LENGTH_SHORT;

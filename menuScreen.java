@@ -1,4 +1,8 @@
 package com.example.kishan.homework2;
+/**
+ * @author: Kishan Patel
+ * @date: 10/3/2017
+ */
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +31,12 @@ public class menuScreen extends AppCompatActivity {
         return char2;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(T_MenuScreen, "App is Created");
+
+        Log.d(T_MenuScreen, "App is Created");                                                      //LogCat debug
         setContentView(R.layout.activity_menu_screen);
         setTitle(getString(R.string.menu_title));
         System.out.println("Test");
@@ -38,6 +44,7 @@ public class menuScreen extends AppCompatActivity {
         hanafi_Button= (Button) findViewById(R.id.hanafi_Button);
         gameStart = (Button) findViewById(R.id.gameStartButton);
 
+        //Follow this button format to add more characters
         ravi_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +69,7 @@ public class menuScreen extends AppCompatActivity {
 
             }
         });
+        //Game start button logic (only activates when both characters are chosen, will start next activity
         gameStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,15 +89,7 @@ public class menuScreen extends AppCompatActivity {
 
 
     }
-    public static byte[] serialize(Object obj) throws IOException {
-        try(ByteArrayOutputStream b = new ByteArrayOutputStream()){
-            try(ObjectOutputStream o = new ObjectOutputStream(b)){
-                o.writeObject(obj);
-            }
-            return b.toByteArray();
-        }
-    }
-
+    //LogCat Debug Messages
     @Override
     protected void onStart() {
         super.onStart();
